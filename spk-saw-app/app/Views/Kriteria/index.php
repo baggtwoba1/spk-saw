@@ -2,8 +2,8 @@
 <?= $this->section('content'); ?>
 
 <div class="container">
-    <h1>Karyawan</h1>
-    <a class="btn btn-primary" href="<?= base_url("/karyawan/add") ?>" role="button"> Tambah Data Karyawan Baru</a>
+    <h1>Kriteria</h1>
+    <a class="btn btn-primary" href="<?= base_url("/kriteria/add") ?>" role="button"> Tambah Data Kriteria Baru</a>
     <br><br>
     <?php if (session()->getFlashdata('pesan')) : ?>
         <div class="alert alert-success" role="alert">
@@ -12,33 +12,27 @@
     <?php endif; ?>
     <div class="row">
         <div class="col">
-            <table id="karyawan" class="table table-striped">
+            <table id="kriteria" class="table table-striped">
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>NIP</th>
-                        <th>Nama</th>
-                        <th>Jenis Kelamin</th>
-                        <th>Telepon</th>
-                        <th>Alamat</th>
+                        <th>Nama Kriteria</th>
+                        <th>Tipe</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     $no = 0;
-                    foreach ($karyawan as $key) {
+                    foreach ($kriteria as $key) {
                         $no++;
                     ?>
                         <tr>
                             <td><?= $no; ?></td>
-                            <td><?= $key['nip']; ?></td>
-                            <td><?= $key['nama']; ?></td>
-                            <td><?= $key['jns_kel']; ?></td>
-                            <td><?= $key['no_hp']; ?></td>
-                            <td><?= $key['alamat']; ?></td>
-                            <td><a href="/karyawan/ubah/<?= $key['id_karyawan']; ?>" class="btn btn-warning">edit</a>
-                                <form action="/karyawan/<?= $key['id_karyawan']; ?>" method="post" class="d-inline">
+                            <td><?= $key['nama_kriteria']; ?></td>
+                            <td><?= $key['tipe']; ?></td>
+                            <td><a href="/kriteria/ubah/<?= $key['id_kriteria']; ?>" class="btn btn-warning">edit</a>
+                                <form action="/kriteria/<?= $key['id_kriteria']; ?>" method="post" class="d-inline">
                                     <?= csrf_field(); ?>
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin Mau Menghapus Data Ini !!!')">hapus</button>
@@ -53,7 +47,7 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#karyawan').DataTable();
+        $('#kriteria').DataTable();
     });
 </script>
 <?= $this->endSection(); ?>
